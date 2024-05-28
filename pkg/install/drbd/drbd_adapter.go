@@ -41,13 +41,16 @@ var defaultNodeSelectTerms = []corev1.NodeSelectorTerm{
 var defaultChartVersion = "v0.4.1"
 
 var distroRegexMap = map[string]string{
-	"(red hat enterprise|centos|almalinux|rocky linux) .*(7\\.[0-9]+)": "rhel7",
-	"(red hat enterprise|centos|almalinux|rocky linux) .*(8\\.[0-9]+)": "rhel8",
-	"(red hat enterprise|centos|almalinux|rocky linux) .*(9\\.[0-9]+)": "rhel9",
-	"ubuntu .*18": "bionic",
-	"ubuntu .*20": "focal",
-	"ubuntu .*22": "jammy",
-	"kylin .*v10": "kylin10",
+	"(red hat enterprise|almalinux|rocky linux) .*(7\\.[0-9]+)": "rhel7",
+	"(red hat enterprise|almalinux|rocky linux) .*(8\\.[0-9]+)": "rhel8",
+	"(red hat enterprise|almalinux|rocky linux) .*(9\\.[0-9]+)": "rhel9",
+	"(red hat centos linux) .*(7\\.[0-9]+)":                     "centos7",
+	"(red hat centos linux) .*(8\\.[0-9]+)":                     "centos8",
+	"(red hat centos linux) .*(9\\.[0-9]+)":                     "centos9",
+	"ubuntu .*18":                                               "bionic",
+	"ubuntu .*20":                                               "focal",
+	"ubuntu .*22":                                               "jammy",
+	"kylin .*v10":                                               "kylin10",
 }
 
 var ttlSecondsAfterFinished3600 = int32(3600)
@@ -373,7 +376,7 @@ func CreateDRBDAdapter(cli client.Client) (int, error) {
 			},
 		}
 
-		matched, err := regexp.Match("^rhel[78]$", []byte(distro))
+		matched, err := regexp.Match("^centos[789]$", []byte(distro))
 		if err != nil {
 			log.Errorf("Regexp match err: %v", err)
 			return adapterCreatedJobNum, err
