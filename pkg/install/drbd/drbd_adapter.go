@@ -41,9 +41,9 @@ var defaultNodeSelectTerms = []corev1.NodeSelectorTerm{
 var defaultChartVersion = "v0.4.1"
 
 var distroRegexMap = map[string]string{
-	"(red hat enterprise|centos|almalinux|rocky linux) \\.7\\b.*": "rhel7",
-	"(red hat enterprise|centos|almalinux|rocky linux) \\.8\\b.*": "rhel8",
-	"(red hat enterprise|centos|almalinux|rocky linux) \\.9\\b.*": "rhel9",
+	"(red hat enterprise|centos|almalinux|rocky linux) .*(7\\.[0-9]+)": "rhel7",
+	"(red hat enterprise|centos|almalinux|rocky linux) .*(8\\.[0-9]+)": "rhel8",
+	"(red hat enterprise|centos|almalinux|rocky linux) .*(9\\.[0-9]+)": "rhel9",
 	"ubuntu .*18": "bionic",
 	"ubuntu .*20": "focal",
 	"ubuntu .*22": "jammy",
