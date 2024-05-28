@@ -221,7 +221,7 @@ BUILD_OPTIONS = -a -mod vendor -installsuffix cgo -ldflags "${BUILD_FLAGS}" -bui
 
 BUILDER_MOUNT_DST_DIR = /go/src/github.com/hwameistor/hwameistor-operator
 DOCKER_SOCK_PATH=/var/run/docker.sock
-BUILDER_NAME = ${IMAGE_REGISTRY}/${MODULE_NAME}-builder
+BUILDER_NAME = ghcr.io/hwameistor/${MODULE_NAME}-builder
 BUILDER_TAG = latest
 IMAGE_REGISTRY ?= ghcr.io/hwameistor
 IMAGE_NAME = ${IMAGE_REGISTRY}/${OPERATOR_MODULE_NAME}
